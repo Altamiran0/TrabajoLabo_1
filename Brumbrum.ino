@@ -6,8 +6,6 @@ const int wheelR2pin = 10;
 
 const int trig = 11;
 const int echo = 12;
-int duracion;
-float distancia;
 
 const int onBoardLed = 13;
 
@@ -22,7 +20,6 @@ void setup() {
   pinMode(trig, OUTPUT);
   digitalWrite(trig, LOW);
   pinMode(echo, INPUT);
-
   pinMode(onBoardLed, OUTPUT);
 }
 
@@ -37,11 +34,11 @@ void stop() {
 }
 
 void brumbrum() {
-  analogWrite(wheelL1pin, 100);
-  analogWrite(wheelL2pin, 0);
+  analogWrite(wheelL1pin, 100); // Pin 4
+  analogWrite(wheelL2pin, 0); // Pin 6
   
-  analogWrite(wheelR1pin, 100);
-  analogWrite(wheelR2pin, 0);
+  analogWrite(wheelR1pin, 100); // Pin 8
+  analogWrite(wheelR2pin, 0); // Pin 10
   
   delay(1000);
 }
@@ -63,7 +60,7 @@ void turnLeft() {
   analogWrite(wheelR1pin, 100);
   analogWrite(wheelR2pin, 0);
   
-  delay(1000);
+  delay(1000);.
 }
 
 void turnRight() {
@@ -81,8 +78,8 @@ void loop() {
   delay(100);
   digitalWrite(trig, LOW);
 
-  duracion = pulseIn(echo, HIGH);
-  distancia = duracion/58;
+  int duracion = pulseIn(echo, HIGH);
+  float distancia = duracion / 58;
 
   if(distancia < 15) turnRight();
   else brumbrum();
