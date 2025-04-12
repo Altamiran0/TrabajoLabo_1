@@ -75,7 +75,7 @@ void turnRight() {
 
 void loop() {
   digitalWrite(trig, HIGH);
-  delay(100);
+  delayMicroseconds(10); // Duracion del pulso => 10μs
   digitalWrite(trig, LOW);
 
   int duracion = pulseIn(echo, HIGH);
